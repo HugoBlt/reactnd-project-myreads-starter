@@ -17,6 +17,7 @@ class Home extends Component {
                     this.props.listOfBooks.filter((book) => (
                     book.shelf == shelf.id
                     ))}
+                onMoveBook = {this.props.onMoveBook}
                 />
             ))}
             <Link to="/search">
