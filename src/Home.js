@@ -9,13 +9,13 @@ class Home extends Component {
             <div className="list-books-title">
               <h1>Hugo's Library</h1>
             </div>
-            {this.props.ListOfShelf.map((Shelf) => (
+            {this.props.listOfShelf.map((shelf) => (
                 <BookSelf
-                idShelf = {Shelf.id}
-                title = {Shelf.nameShelf}
-                ListOfBooksShelf = {
-                    this.props.ListOfBooks.filter((book) => (
-                    book.idShelf == Shelf.id
+                shelf = {shelf.id}
+                title = {shelf.nameShelf}
+                listOfBooksShelf = {
+                    this.props.listOfBooks.filter((book) => (
+                    book.shelf == shelf.id
                     ))}
                 />
             ))}

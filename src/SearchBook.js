@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 
 class SearchBook extends Component {
+    state = {
+        query: '',
+        books: []
+      }
     render () {
         return (
               <div className="search-books">
@@ -20,7 +25,6 @@ class SearchBook extends Component {
                       you don't find a specific author or title. Every search is limited by search terms.
                     */}
                     <input type="text" placeholder="Search by title or author"/>
-    
                   </div>
                 </div>
                 <div className="search-books-results">
