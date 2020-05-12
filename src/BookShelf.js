@@ -9,14 +9,13 @@ class BookShelf extends Component {
             <div className="list-books-content">
               <div>
                 <div className="bookshelf">
-                  <h2 className="bookshelf-title"> {this.props.title} </h2>
+                  <h2 className="bookshelf-title"> {this.props.name} </h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                         {this.props.listOfBooksShelf.map((book) => (
                             <li>
                                 <Book
                                 book = {book}
-                                shelf = {this.props.shelf}
                                 onMoveBook = {this.props.onMoveBook}
                                 listOfShelf = {this.props.listOfShelf}
                                 />

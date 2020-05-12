@@ -12,8 +12,7 @@ class Home extends Component {
             {this.props.listOfShelf.filter((shelf) => (
               shelf.display === true)).map((shelf) => (
                 <BookSelf
-                shelf = {shelf.id}
-                title = {shelf.nameShelf}
+                name = {shelf.nameShelf}
                 listOfBooksShelf = {
                     this.props.listOfBooks.filter((book) => (
                     book.shelf === shelf.id

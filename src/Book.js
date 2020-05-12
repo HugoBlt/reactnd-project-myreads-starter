@@ -15,7 +15,7 @@ class Book extends Component {
       this.props.onClose && this.props.onClose(e);
     };
     render () {
-        const { book, selectedShelf } = this.props
+        const book  = this.props.book
         const imageLink = (typeof book.imageLinks === "undefined" ) ? "" : `url(${book.imageLinks.thumbnail})`;
         return (
             <div className="book">
@@ -28,10 +28,10 @@ class Book extends Component {
                 </Modal>
               </div>
               <div className="book-shelf-changer">
-                <select onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
+                <select value={book.shelf} onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
                 <option value="move" selected disabled>Move to...</option>
                   {this.props.listOfShelf.map((shelf) => (
-                    <option value= {shelf.id} /*selected={shelf.id === selectedShelf ? "selected" : ""}*/> {shelf.nameShelf} </option>
+                    <option value= {shelf.id}> {shelf.nameShelf} </option>
                         ))}
                 </select>
               </div>
