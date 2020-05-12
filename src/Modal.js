@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import './Modal.css'
 
-class Modal extends React.Component {
-    onClose = e => {
-      this.props.onClose && this.props.onClose(e);
+class Modal extends Component {
+    onClose = event => {
+      this.props.onClose && this.props.onClose(event);
     };
     render() {
       if (!this.props.show) {

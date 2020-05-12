@@ -15,7 +15,7 @@ class Home extends Component {
                 title = {shelf.nameShelf}
                 listOfBooksShelf = {
                     this.props.listOfBooks.filter((book) => (
-                    book.shelf == shelf.id
+                    book.shelf === shelf.id
                     ))}
                 onMoveBook = {this.props.onMoveBook}
                 />
