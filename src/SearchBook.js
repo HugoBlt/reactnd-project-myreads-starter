@@ -14,17 +14,20 @@ class SearchBook extends Component {
       ?
       BooksAPI.search(query).then(
         (searchedBooks) => {
+          if (searchedBooks.error){
+            searchedBooks = [] 
+          }
+          searchedBooks.map(book => (this.props.listOfBooks.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
           this.setState(() => ({ 
+            query : query,
             searchedBooks : searchedBooks 
           }))
       })
       :
-      BooksAPI.search(query).then(
-        (searchedBooks) => {
-          this.setState(() => ({ 
-            searchedBooks : [] 
+      this.setState(() => ({ 
+          query : '',
+          searchedBooks : [] 
           }))
-      })
     }
     render () {
       const { query } = this.state.query
@@ -59,7 +62,6 @@ class SearchBook extends Component {
                         <li>
                           <Book
                           book = {book}
-                          shelf = "none"
                           onMoveBook = {this.props.onMoveBook}
                           listOfShelf = {this.props.listOfShelf}
                           />
