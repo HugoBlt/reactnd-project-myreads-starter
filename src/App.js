@@ -11,14 +11,22 @@ class BooksApp extends React.Component {
       {
         "id": "currentlyReading",
         "nameShelf": "Currently Reading",
+        "display": true
       },
       {
         "id": "wantToRead",
         "nameShelf": "Want to Read",
+        "display": true
       },
       {
         "id": "read",
         "nameShelf": "Read",
+        "display": true
+      },
+      {
+        "id": "none",
+        "nameShelf": "None",
+        "display": false
       }], 
     listOfBooks : [
      ]
@@ -53,7 +61,9 @@ class BooksApp extends React.Component {
         )} 
       />
       <Route path = '/search' render = {() => (
-        <SearchBook/>
+        <SearchBook
+        onMoveBook = {this.moveBook}
+        listOfShelf = {this.state.listOfShelf}/>
         )} 
       />
       </div>

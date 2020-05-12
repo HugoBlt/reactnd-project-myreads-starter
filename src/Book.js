@@ -15,7 +15,7 @@ class Book extends Component {
       this.props.onClose && this.props.onClose(e);
     };
     render () {
-        const { book, shelf } = this.props
+        const { book, selectedShelf } = this.props
         return (
             <div className="book">
             <div className="book-top">
@@ -28,11 +28,10 @@ class Book extends Component {
               </div>
               <div className="book-shelf-changer">
                 <select onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
-                  <option value="move" disabled>Move to...</option>
-                  <option value="none">None</option>
-                  <option value="currentlyReading">Currently Reading</option>
-                  <option value="wantToRead">Want to Read</option>
-                  <option value="read">Read</option>
+                <option value="move" selected disabled>Move to...</option>
+                  {this.props.listOfShelf.map((shelf) => (
+                    <option value= {shelf.id} /*selected={shelf.id === selectedShelf ? "selected" : ""}*/> {shelf.nameShelf} </option>
+                        ))}
                 </select>
               </div>
             </div>

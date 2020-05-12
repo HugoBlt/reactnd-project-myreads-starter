@@ -1,14 +1,33 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
+import Book from './Book'
 
 
 class SearchBook extends Component {
     state = {
         query: '',
-        books: []
+        searchedBooks: []
       }
+    updateQuery = (query) => {
+      query !== '' 
+      ?
+      BooksAPI.search(query).then(
+        (searchedBooks) => {
+          this.setState(() => ({ 
+            searchedBooks : searchedBooks 
+          }))
+      })
+      :
+      BooksAPI.search(query).then(
+        (searchedBooks) => {
+          this.setState(() => ({ 
+            searchedBooks : [] 
+          }))
+      })
+    }
     render () {
+      const { query } = this.state.query
         return (
               <div className="search-books">
                 <div className="search-books-bar">
@@ -24,11 +43,31 @@ class SearchBook extends Component {
                       However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                       you don't find a specific author or title. Every search is limited by search terms.
                     */}
-                    <input type="text" placeholder="Search by title or author"/>
+                    <input 
+                      type="text" 
+                      placeholder="Search by title or author"
+                      value = {query}
+                      onChange = {(event) => this.updateQuery(event.target.value)}/>
                   </div>
                 </div>
                 <div className="search-books-results">
-                  <ol className="books-grid"></ol>
+                    {/*JSON.stringify(this.state.searchedBooks)*/}
+                    {typeof this.state.searchedBooks.items == "undefined"
+                    ?
+                    <ol className="books-grid">
+                      {this.state.searchedBooks.map((book) => (
+                        <li>
+                          <Book
+                          book = {book}
+                          shelf = "none"
+                          onMoveBook = {this.props.onMoveBook}
+                          listOfShelf = {this.props.listOfShelf}
+                          />
+                        </li>
+                      ))}
+                    </ol>
+                    :
+                    <div> <h2>No books find </h2></div>} 
                 </div>
               </div>
         )

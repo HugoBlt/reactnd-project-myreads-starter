@@ -9,7 +9,8 @@ class Home extends Component {
             <div className="list-books-title">
               <h1>Hugo's Library</h1>
             </div>
-            {this.props.listOfShelf.map((shelf) => (
+            {this.props.listOfShelf.filter((shelf) => (
+              shelf.display === true)).map((shelf) => (
                 <BookSelf
                 shelf = {shelf.id}
                 title = {shelf.nameShelf}
@@ -18,6 +19,7 @@ class Home extends Component {
                     book.shelf === shelf.id
                     ))}
                 onMoveBook = {this.props.onMoveBook}
+                listOfShelf = {this.props.listOfShelf}
                 />
             ))}
             <Link to="/search">
