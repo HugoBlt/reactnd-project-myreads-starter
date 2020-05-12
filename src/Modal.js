@@ -10,10 +10,10 @@ class Modal extends Component {
         return null;
       }
       return (
-        <div class="modal" id="modal">
-          <div class="content">{this.props.children}</div>
-          <div class="actions">
-            <button class="toggle-button" onClick={this.onClose}>
+        <div className="modal" id="modal">
+          <div className="content">{this.props.children}</div>
+          <div className="actions">
+            <button className="toggle-button" onClick={this.onClose}>
               close
             </button>
           </div>

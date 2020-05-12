@@ -21,7 +21,7 @@ class Book extends Component {
             <div className="book">
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: imageLink }}>
-                <button class="book-details" onClick={(event) => this.showModal()}> </button>
+                <button className = "book-details" onClick={(event) => this.showModal()}> </button>
                 <Modal onClose={this.showModal} show={this.state.show}>
                   <div>{`Average Note : ${book.averageRating}`}</div>
                   <div>{`${book.pageCount} pages`}</div>
@@ -29,9 +29,9 @@ class Book extends Component {
               </div>
               <div className="book-shelf-changer">
                 <select value={book.shelf} onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
-                <option value="move" selected disabled>Move to...</option>
+                <option value="move" disabled>Move to...</option>
                   {this.props.listOfShelf.map((shelf) => (
-                    <option value= {shelf.id}> {shelf.nameShelf} </option>
+                    <option key = {shelf.id} value= {shelf.id}> {shelf.nameShelf} </option>
                         ))}
                 </select>
               </div>
