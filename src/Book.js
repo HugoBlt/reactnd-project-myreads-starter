@@ -16,10 +16,11 @@ class Book extends Component {
     };
     render () {
         const { book, selectedShelf } = this.props
+        const imageLink = (typeof book.imageLinks === "undefined" ) ? "" : `url(${book.imageLinks.thumbnail})`;
         return (
             <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: imageLink }}>
                 <button class="book-details" onClick={(event) => this.showModal()}> </button>
                 <Modal onClose={this.showModal} show={this.state.show}>
                   <div>{`Average Note : ${book.averageRating}`}</div>

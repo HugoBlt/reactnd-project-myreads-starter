@@ -67,7 +67,7 @@ class SearchBook extends Component {
                       ))}
                     </ol>
                     :
-                    <div> <h2>No books find </h2></div>} 
+                    <div> <h2 className="center">No books find </h2></div>} 
                 </div>
               </div>
         )
