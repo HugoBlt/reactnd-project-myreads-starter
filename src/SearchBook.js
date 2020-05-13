@@ -16,13 +16,13 @@ class SearchBook extends Component {
         (searchedBooks) => {
           if (searchedBooks.error){
             searchedBooks = [] 
-          }
-          searchedBooks.map(book => (this.props.listOfBooks.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
+          }else{
+          let alreadyhave = searchedBooks.filter(b => !this.props.listOfBooks.map(book => book.id).includes(b.id));
           this.setState(() => ({ 
             query : query,
-            searchedBooks : searchedBooks 
+            searchedBooks : alreadyhave.concat(this.props.listOfBooks)
           }))
-      })
+      }})
       :
       this.setState(() => ({ 
           query : '',

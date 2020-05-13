@@ -28,7 +28,7 @@ class Book extends Component {
                 </Modal>
               </div>
               <div className="book-shelf-changer">
-                <select value={book.shelf} onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
+                <select value={typeof book.shelf === "undefined" ? "none" : book.shelf} onChange = {(event) => this.props.onMoveBook(book, event.target.value)}>
                 <option value="move" disabled>Move to...</option>
                   {this.props.listOfShelf.map((shelf) => (
                     <option key = {shelf.id} value= {shelf.id}> {shelf.nameShelf} </option>
