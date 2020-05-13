@@ -15,17 +15,17 @@ class SearchBook extends Component {
       BooksAPI.search(query).then(
         (searchedBooks) => {
           if (searchedBooks.error){
-            searchedBooks = [] 
+            searchedBooks = searchedBooks 
           }else{
-          let alreadyhave = searchedBooks.filter(b => !this.props.listOfBooks.map(book => book.id).includes(b.id));
+          let alreadyhave = searchedBooks.filter(b => !this.props.listOfBooks.map(book => book.id).includes(b.id))
+          searchedBooks = alreadyhave.concat(this.props.listOfBooks)}
           this.setState(() => ({ 
             query : query,
-            searchedBooks : alreadyhave.concat(this.props.listOfBooks)
+            searchedBooks : searchedBooks
           }))
-      }})
+      })
       :
       this.setState(() => ({ 
-          query : '',
           searchedBooks : [] 
           }))
     }
